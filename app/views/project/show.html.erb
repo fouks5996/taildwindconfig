@@ -1,0 +1,8 @@
+<p id="notice"><%= notice %></p>
+
+ <h1> Nom du projet :<%= @project.project_name %></h1>
+ <h1> Type de projet <%= @project.type_project %></h1>
+ <h1> Exported : <%= @project.exported %></h1>
+
+<%= link_to 'Edit', edit_project_path(@project) %> |
+<%= link_to 'Back', '/' %>
