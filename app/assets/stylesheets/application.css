@@ -19,42 +19,21 @@
 @tailwind components;
 @tailwind utilities;
 
-.button{
-   padding: 11px 22px;
-   color: white;
-   border-radius: 8px;
-   font-size: 0.9rem;
-   font-weight: 500;
+@layer components {
+   .btn-primary {
+     @apply py-3 px-6 bg-btn text-white text-normal font-semibold rounded-lg visited:text-white hover:bg-btnhover cursor-pointer
+   }
+   .link{
+      @apply text-white hover:bg-trans hover:underline underline-offset-2 visited:text-white text-normal
+   }
  }
 
  input[type=submit]{
-   padding: 11px 22px;
-   color: white;
-   border-radius: 8px;
-   font-size: 0.9rem;
-   font-weight: 500;
    background-color: #38BDF9;
  }
-
-a:visited{
-color: white;
-}
-
-a {
-   color: black;
-}
-
-a:hover{
-   text-decoration: underline;
-   background-color: transparent;
-}
 
 input[type=email], input[type=text], input[type=password]{
    background-color: #334155 !important;
    border-radius: 4px;
    border-style: none;
-}
-
-.wrapper{
-   width: 100%;
 }

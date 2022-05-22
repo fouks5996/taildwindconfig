@@ -484,6 +484,47 @@ Ensure the default browser behavior of the `hidden` attribute.
   --tw-backdrop-sepia:  ;
 }
 
+.btn-primary {
+  cursor: pointer;
+  border-radius: 0.5rem;
+  --tw-bg-opacity: 1;
+  background-color: rgb(56 189 248 / var(--tw-bg-opacity));
+  padding-top: 0.75rem;
+  padding-bottom: 0.75rem;
+  padding-left: 1.5rem;
+  padding-right: 1.5rem;
+  font-size: 0.9rem;
+  font-weight: 600;
+  --tw-text-opacity: 1;
+  color: rgb(255 255 255 / var(--tw-text-opacity));
+}
+
+.btn-primary:visited {
+  color: rgb(255 255 255 );
+}
+
+.btn-primary:hover {
+  --tw-bg-opacity: 1;
+  background-color: rgb(18 130 180 / var(--tw-bg-opacity));
+}
+
+.link {
+  font-size: 0.9rem;
+  --tw-text-opacity: 1;
+  color: rgb(255 255 255 / var(--tw-text-opacity));
+  text-underline-offset: 2px;
+}
+
+.link:visited {
+  color: rgb(255 255 255 );
+}
+
+.link:hover {
+  background-color: transparent;
+  -webkit-text-decoration-line: underline;
+          text-decoration-line: underline;
+}
+
 .fixed {
   position: fixed;
 }
@@ -507,6 +548,10 @@ Ensure the default browser behavior of the `hidden` attribute.
 
 .right-0 {
   right: 0px;
+}
+
+.-z-10 {
+  z-index: -10;
 }
 
 .mx-auto {
@@ -539,12 +584,28 @@ Ensure the default browser behavior of the `hidden` attribute.
   margin-left: 0.5rem;
 }
 
-.mb-1 {
-  margin-bottom: 0.25rem;
+.mb-7 {
+  margin-bottom: 1.75rem;
 }
 
-.mt-8 {
-  margin-top: 2rem;
+.mb-2 {
+  margin-bottom: 0.5rem;
+}
+
+.mt-20 {
+  margin-top: 5rem;
+}
+
+.ml-9 {
+  margin-left: 2.25rem;
+}
+
+.mb-5 {
+  margin-bottom: 1.25rem;
+}
+
+.mr-5 {
+  margin-right: 1.25rem;
 }
 
 .mt-7 {
@@ -555,60 +616,12 @@ Ensure the default browser behavior of the `hidden` attribute.
   margin-bottom: 3.5rem;
 }
 
+.mt-8 {
+  margin-top: 2rem;
+}
+
 .mb-6 {
   margin-bottom: 1.5rem;
-}
-
-.mr-5 {
-  margin-right: 1.25rem;
-}
-
-.mb-2 {
-  margin-bottom: 0.5rem;
-}
-
-.mt-5 {
-  margin-top: 1.25rem;
-}
-
-.mb-7 {
-  margin-bottom: 1.75rem;
-}
-
-.mb-4 {
-  margin-bottom: 1rem;
-}
-
-.mb-5 {
-  margin-bottom: 1.25rem;
-}
-
-.ml-5 {
-  margin-left: 1.25rem;
-}
-
-.ml-6 {
-  margin-left: 1.5rem;
-}
-
-.ml-8 {
-  margin-left: 2rem;
-}
-
-.ml-9 {
-  margin-left: 2.25rem;
-}
-
-.mt-10 {
-  margin-top: 2.5rem;
-}
-
-.mb-9 {
-  margin-bottom: 2.25rem;
-}
-
-.mt-20 {
-  margin-top: 5rem;
 }
 
 .inline {
@@ -627,14 +640,6 @@ Ensure the default browser behavior of the `hidden` attribute.
   display: none;
 }
 
-.h-16 {
-  height: 4rem;
-}
-
-.h-5 {
-  height: 1.25rem;
-}
-
 .h-screen {
   height: 100vh;
 }
@@ -643,12 +648,20 @@ Ensure the default browser behavior of the `hidden` attribute.
   height: 100%;
 }
 
-.h-4\/5 {
-  height: 80%;
+.h-16 {
+  height: 4rem;
+}
+
+.h-5 {
+  height: 1.25rem;
 }
 
 .h-80 {
   height: 20rem;
+}
+
+.w-screen {
+  width: 100vw;
 }
 
 .w-full {
@@ -667,20 +680,16 @@ Ensure the default browser behavior of the `hidden` attribute.
   width: 80%;
 }
 
+.w-11\/12 {
+  width: 91.666667%;
+}
+
 .w-2\/5 {
   width: 40%;
 }
 
 .w-64 {
   width: 16rem;
-}
-
-.w-4 {
-  width: 1rem;
-}
-
-.w-10\/12 {
-  width: 83.333333%;
 }
 
 .min-w-basic {
@@ -739,19 +748,6 @@ Ensure the default browser behavior of the `hidden` attribute.
   border-radius: 0.75rem;
 }
 
-.rounded-sm {
-  border-radius: 0.125rem;
-}
-
-.rounded-lg {
-  border-radius: 0.5rem;
-}
-
-.rounded-l {
-  border-top-left-radius: 0.25rem;
-  border-bottom-left-radius: 0.25rem;
-}
-
 .bg-blue {
   --tw-bg-opacity: 1;
   background-color: rgb(19 28 49 / var(--tw-bg-opacity));
@@ -761,14 +757,9 @@ Ensure the default browser behavior of the `hidden` attribute.
   background-color: transparent;
 }
 
-.bg-white {
+.bg-lighty {
   --tw-bg-opacity: 1;
-  background-color: rgb(255 255 255 / var(--tw-bg-opacity));
-}
-
-.bg-btn {
-  --tw-bg-opacity: 1;
-  background-color: rgb(56 189 248 / var(--tw-bg-opacity));
+  background-color: rgb(51 65 85 / var(--tw-bg-opacity));
 }
 
 .bg-darky {
@@ -776,9 +767,8 @@ Ensure the default browser behavior of the `hidden` attribute.
   background-color: rgb(30 41 59 / var(--tw-bg-opacity));
 }
 
-.bg-lighty {
-  --tw-bg-opacity: 1;
-  background-color: rgb(51 65 85 / var(--tw-bg-opacity));
+.p-6 {
+  padding: 1.5rem;
 }
 
 .p-3 {
@@ -787,10 +777,6 @@ Ensure the default browser behavior of the `hidden` attribute.
 
 .p-7 {
   padding: 1.75rem;
-}
-
-.p-6 {
-  padding: 1.5rem;
 }
 
 .py-6 {
@@ -808,23 +794,12 @@ Ensure the default browser behavior of the `hidden` attribute.
   padding-bottom: 0.75rem;
 }
 
-.px-7 {
-  padding-left: 1.75rem;
-  padding-right: 1.75rem;
-}
-
-.py-5 {
-  padding-top: 1.25rem;
-  padding-bottom: 1.25rem;
-}
-
-.py-7 {
-  padding-top: 1.75rem;
-  padding-bottom: 1.75rem;
-}
-
 .pr-2 {
   padding-right: 0.5rem;
+}
+
+.pt-32 {
+  padding-top: 8rem;
 }
 
 .text-center {
@@ -836,7 +811,7 @@ Ensure the default browser behavior of the `hidden` attribute.
 }
 
 .text-normal {
-  font-size: 1rem;
+  font-size: 0.9rem;
 }
 
 .text-big {
@@ -872,11 +847,6 @@ Ensure the default browser behavior of the `hidden` attribute.
   color: rgb(255 255 255 / var(--tw-text-opacity));
 }
 
-.text-blue {
-  --tw-text-opacity: 1;
-  color: rgb(19 28 49 / var(--tw-text-opacity));
-}
-
 .text-btn {
   --tw-text-opacity: 1;
   color: rgb(56 189 248 / var(--tw-text-opacity));
@@ -903,45 +873,14 @@ Ensure the default browser behavior of the `hidden` attribute.
   --tw-ring-opacity: 0;
 }
 
-.button{
-  padding: 11px 22px;
-  color: white;
-  border-radius: 8px;
-  font-size: 0.9rem;
-  font-weight: 500;
-}
-
 input[type=submit]{
-  padding: 11px 22px;
-  color: white;
-  border-radius: 8px;
-  font-size: 0.9rem;
-  font-weight: 500;
   background-color: #38BDF9;
-}
-
-a:visited{
-  color: white;
-}
-
-a {
-  color: black;
-}
-
-a:hover{
-  text-decoration: underline;
-  background-color: transparent;
 }
 
 input[type=email], input[type=text], input[type=password]{
   background-color: #334155 !important;
   border-radius: 4px;
   border-style: none;
-}
-
-.wrapper{
-  width: 100%;
-  margin-top: 120px;
 }
 
 .placeholder\:text-ph::-moz-placeholder {
@@ -959,17 +898,12 @@ input[type=email], input[type=text], input[type=password]{
   color: rgb(76 91 112 / var(--tw-text-opacity));
 }
 
-.visited\:text-blue:visited {
-  color: rgb(19 28 49 );
-}
-
 .visited\:text-white:visited {
   color: rgb(255 255 255 );
 }
 
-.hover\:bg-white:hover {
-  --tw-bg-opacity: 1;
-  background-color: rgb(255 255 255 / var(--tw-bg-opacity));
+.hover\:bg-trans:hover {
+  background-color: transparent;
 }
 
 .focus\:outline-none:focus {

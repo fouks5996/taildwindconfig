@@ -10,6 +10,7 @@ module.exports = {
 			trans: "transparent",
 			blue: "#131C31",
 			btn: "#38BDF8",
+			btnhover: "#1282B4",
 			textnormal: "#CBD5E1",
 			darky: "#1E293B",
 			lighty: "#334155",
