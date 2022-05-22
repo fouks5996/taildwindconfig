@@ -5,6 +5,7 @@ class ProjectController < ApplicationController
   # GET /projects or /projects.json
   def index
     @user_projects = User.find(current_user.id).projects
+    @project_length = User.find(current_user.id).projects.length
   end
 
   # GET /projects/1 or /projects/1.json
@@ -29,12 +30,10 @@ class ProjectController < ApplicationController
       user: current_user
     )
       if @project.save
-        flash[:success] = "well done"
+        flash[:success] = "Project created"
         redirect_to "/project"
       else
-        flash[:error] = "Réessayer"
-        format.html { render :new, status: :unprocessable_entity }
-        format.json { render json: @project.errors, status: :unprocessable_entity }
+        render 'project/new'
       end
   end
 
@@ -54,11 +53,8 @@ class ProjectController < ApplicationController
   # DELETE /projects/1 or /projects/1.json
   def destroy
     @project.destroy
-
-    respond_to do |format|
-      format.html { redirect_to "/project", notice: "Project was successfully destroyed." }
-      format.json { head :no_content }
-    end
+    flash[:error] = "Project destroyed"
+    redirect_to '/project'
   end
 
   private

@@ -1,20 +1,33 @@
-<h1>New Project</h1>
+<div class="flex flex-col items-center justify-center h-screen pt-8">
 
-<%= form_tag url_for(action: 'create'), method: "post" do %>
-      <div>
-         <%= label_tag 'Nom du projet' %>
-         <%= text_field_tag 'project_name' %>
+      <% if !@project.nil? && @project.errors.any?  %>
+            <div class="p-7 bg-darky rounded-xl my-8" role="alert">
+                  <p class="text-white text-normal"> Nous n'avons pas réussi à créer le potin pour la (ou les) raison(s) suivante(s) :</p>
+                  <ul>
+                   <% @project.errors.full_messages.each do |message| %>
+                         <li class="text-white text-normal"><%= message %></li>
+                  <% end %>
+                  </ul>
+            </div>
+      <% end %>
 
-         <%= label_tag 'Type' %>
-         <%= text_field_tag 'type_project' %>
+    <h2 class="text-big font-inter text-white font-extrabold" >New project </h2>
+    
 
-         <%= label_tag 'exporte' %>
-         <%= text_field_tag 'exported' %>
+    <div class="p-7 bg-darky rounded-xl my-8" >
+      <%= form_tag url_for(action: 'create'), method: "post" do %>
+            <div class="flex flex-col">
+                  <%= label_tag 'Nom du projet', nil, :class => "text-white text-normal mb-2"  %>
+                  <%= text_field_tag 'project_name', nil, :class => "w-64 mb-7 placeholder:text-ph", :placeholder => "Ex : My Project" %>
+
+                  <%= label_tag 'Type', nil, :class => "text-white text-normal mb-2"%>
+                  <%= text_field_tag 'type_project', nil, :class => "w-64 mb-7 placeholder:text-ph", :placeholder => "Ex : MVP" %>
+
+                  <%= label_tag 'Exported', nil, :class => "text-white text-normal mb-2"%>
+                  <%= text_field_tag 'exported', "false", :class => "w-64 mb-7 text:white placeholder:text-ph" %>
+                  <%= submit_tag "Create Project", :class => "btn-primary"   %>
+            </div>
+            <% end %>
       </div>
-      <br /> 
-      <%= submit_tag "Create Project" %>
-<% end %>
-
-
-
-<%= link_to 'Back', '/' %>
+</div>
+<div class="absolute top-28 left-28 top" >  <%= link_to 'Back', :back, class: "btn-primary bg-darky" %> </div>

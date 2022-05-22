@@ -550,6 +550,14 @@ Ensure the default browser behavior of the `hidden` attribute.
   right: 0px;
 }
 
+.top-28 {
+  top: 7rem;
+}
+
+.left-28 {
+  left: 7rem;
+}
+
 .-z-10 {
   z-index: -10;
 }
@@ -584,6 +592,10 @@ Ensure the default browser behavior of the `hidden` attribute.
   margin-left: 0.5rem;
 }
 
+.mr-2 {
+  margin-right: 0.5rem;
+}
+
 .mb-7 {
   margin-bottom: 1.75rem;
 }
@@ -600,8 +612,8 @@ Ensure the default browser behavior of the `hidden` attribute.
   margin-left: 2.25rem;
 }
 
-.mb-5 {
-  margin-bottom: 1.25rem;
+.mt-5 {
+  margin-top: 1.25rem;
 }
 
 .mr-5 {
@@ -656,6 +668,10 @@ Ensure the default browser behavior of the `hidden` attribute.
   height: 1.25rem;
 }
 
+.h-4 {
+  height: 1rem;
+}
+
 .h-80 {
   height: 20rem;
 }
@@ -676,6 +692,10 @@ Ensure the default browser behavior of the `hidden` attribute.
   width: 12rem;
 }
 
+.w-4 {
+  width: 1rem;
+}
+
 .w-4\/5 {
   width: 80%;
 }
@@ -684,12 +704,12 @@ Ensure the default browser behavior of the `hidden` attribute.
   width: 91.666667%;
 }
 
-.w-2\/5 {
-  width: 40%;
-}
-
 .w-64 {
   width: 16rem;
+}
+
+.w-2\/5 {
+  width: 40%;
 }
 
 .min-w-basic {
@@ -744,6 +764,10 @@ Ensure the default browser behavior of the `hidden` attribute.
   border-radius: 0.375rem;
 }
 
+.rounded-lg {
+  border-radius: 0.5rem;
+}
+
 .rounded-xl {
   border-radius: 0.75rem;
 }
@@ -767,8 +791,8 @@ Ensure the default browser behavior of the `hidden` attribute.
   background-color: rgb(30 41 59 / var(--tw-bg-opacity));
 }
 
-.p-6 {
-  padding: 1.5rem;
+.bg-opacity-25 {
+  --tw-bg-opacity: 0.25;
 }
 
 .p-3 {
@@ -794,12 +818,29 @@ Ensure the default browser behavior of the `hidden` attribute.
   padding-bottom: 0.75rem;
 }
 
+.px-6 {
+  padding-left: 1.5rem;
+  padding-right: 1.5rem;
+}
+
 .pr-2 {
   padding-right: 0.5rem;
 }
 
 .pt-32 {
   padding-top: 8rem;
+}
+
+.pt-1 {
+  padding-top: 0.25rem;
+}
+
+.pb-6 {
+  padding-bottom: 1.5rem;
+}
+
+.pt-8 {
+  padding-top: 2rem;
 }
 
 .text-center {
@@ -824,6 +865,10 @@ Ensure the default browser behavior of the `hidden` attribute.
 
 .text-biggest {
   font-size: 3.75rem;
+}
+
+.font-normal {
+  font-weight: 400;
 }
 
 .font-bold {
