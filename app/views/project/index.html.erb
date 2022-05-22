@@ -1,4 +1,4 @@
-<div class="wrapper max-w-7xl mx-auto px-4 sm:px-6 lg:px-8" >
+<div class="pt-32 max-w-7xl mx-auto px-4 sm:px-6 lg:px-8" >
   <div class="flex items-end justify-between mb-7" >
       <div>
         <h6 class="text-sm font-bold text-btn mb-2" > Hi <%= current_user.first_name%></h6>
@@ -14,12 +14,13 @@
             <h1 class="text-big text-white font-bold" > Tu n'as pas encore de projets !</h1>
           </div>
         <% else %>
-        <div class="flex justify-between items-center mt-20 mb-3 ml-9 w-10/12 " >
+        <div class="flex justify-between items-center mt-20 mb-3 ml-9 w-11/12 " >
             <div class="text-normal text-white  min-w-basic " > Name </div>
             <div class="text-normal text-white  min-w-basic "> Type</div>
             <div class="text-normal text-white  min-w-basic "> Created at</div>
             <div class="text-normal text-white  min-w-basic "> Updated at</div>
             <div class="text-normal text-white  min-w-basic ">  Exported ?</div>
+            <div></div>
         </div>
         <div class="bg-darky w-full p-6 rounded-xl " >
             <% @user_projects.each do |project| %>
@@ -31,9 +32,8 @@
                     <div class="text-normal text-white p-3 bg-lighty min-w-basic rounded-md"> <%= project.updated_at.strftime("%d %B %Y") %></div>
                     <div class="text-normal text-white p-3 bg-lighty min-w-basic rounded-md">  <%= project.exported %></div>
                     <div>
-                        <%= link_to 'Show', project %>
-                        <%= link_to 'Edit', edit_project_path(project) %>
-                        <%= link_to 'Destroy', project, method: :delete, data: { confirm: 'Are you sure?' } %>
+                        <%= link_to '<i class="fa-solid fa-sliders"></i>'.html_safe, edit_project_path(project), class:"mr-5 text-white hover:bg-trans visited:text-white" %>
+                        <%= link_to '<i class="fa-solid fa-trash-can"></i>'.html_safe, project, class:"text-white hover:bg-trans visited:text-white", method: :delete, data: { confirm: 'Are you sure?' } %>
                     </div>
                 </div>
                 <% end %>

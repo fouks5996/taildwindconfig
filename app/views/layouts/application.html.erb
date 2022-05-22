@@ -20,7 +20,10 @@
      </script>
   </head>
 
-  <body class="bg-blue font-inter" >
+  <body class="bg-blue font-inter relative" >
+    <div class="h-screen w-screen absolute -z-10">
+       <%= image_tag "background.png", class: "h-full w-full fixed" %>
+    </div>
   <nav class="fixed top-0 w-full bg-trans py-6">
     <div class="max-w-7xl mx-auto px-4 sm:px-6 lg:px-8">
     <div class="relative flex items-center justify-between h-16">
@@ -38,14 +41,14 @@
                       <%= current_user.first_name%> <%= current_user.last_name%> 
                     </div>
                   </div>
-                  <div id="drop" class="hidden origin-top-right absolute right-0 mt-2 w-48 rounded-md shadow-lg py-3 bg-white ring-1 ring-black ring-opacity-0 focus:outline-none" role="menu" aria-orientation="vertical" aria-labelledby="user-menu-button" tabindex="-1">
-                   <li class="mb-3 text-blue ">
-                      <i class="fa-solid fa-list-check text-blue ml-4 "></i>
-                      <%= link_to 'Mes projets', '/project', class: 'ml-2 text-blue hover:bg-white visited:text-blue text-normal' %> (<%=User.find(current_user.id).projects.length %>)
+                  <div id="drop" class="hidden origin-top-right absolute right-0 mt-2 w-48 rounded-md shadow-lg py-3 bg-lighty ring-1 ring-black ring-opacity-0 focus:outline-none" role="menu" aria-orientation="vertical" aria-labelledby="user-menu-button" tabindex="-1">
+                   <li class="mb-3 text-white ">
+                      <i class="fa-solid fa-list-check text-white ml-4 "></i>
+                      <%= link_to 'Mes projets', '/project', class: 'ml-2 text-white hover:bg-trans visited:text-white text-normal' %> (<%=User.find(current_user.id).projects.length %>)
                     </li>
                     <li>
-                      <i class="fa-solid fa-arrow-right-from-bracket text-blue ml-4 "></i>
-                      <%= link_to 'Logout', destroy_user_session_path, class: 'ml-2 text-blue hover:bg-white visited:text-blue text-normal', method: :delete %>
+                      <i class="fa-solid fa-arrow-right-from-bracket text-white ml-4 "></i>
+                      <%= link_to 'Logout', destroy_user_session_path, class: 'ml-2 text-white hover:bg-trans visited:text-white text-normal', method: :delete %>
                    </li>
                     <% else %>
                       <%= link_to 'Login', new_user_session_path, class: 'text-white visited:text-white text-normal' %> /
