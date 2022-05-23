@@ -2,7 +2,7 @@
 
       <% if !@project.nil? && @project.errors.any?  %>
             <div class="p-7 bg-darky rounded-xl my-8" role="alert">
-                  <p class="text-white text-normal"> Nous n'avons pas réussi à créer le potin pour la (ou les) raison(s) suivante(s) :</p>
+                  <p class="text-white text-normal"> Nous n'avons pas réussi à créer le projet pour la (ou les) raison(s) suivante(s) :</p>
                   <ul>
                    <% @project.errors.full_messages.each do |message| %>
                          <li class="text-white text-normal"><%= message %></li>

@@ -32,7 +32,7 @@
                     <div class="text-normal text-white p-3 bg-lighty bg-opacity-25 min-w-basic rounded-md"> <%= project.updated_at.strftime("%d %B %Y") %></div>
                     <div class="text-normal text-white p-3 bg-lighty bg-opacity-25 min-w-basic rounded-md">  <%= project.exported %></div>
                     <div>
-                        <%= link_to '<i class="fa-solid fa-sliders"></i>'.html_safe, edit_project_path(project), class:"mr-5 text-white hover:bg-trans visited:text-white" %>
+                        <%= link_to '<i class="fa-solid fa-sliders"></i>'.html_safe, project_screens_path(project), class:"mr-5 text-white hover:bg-trans visited:text-white" %>
                         <%= link_to '<i class="fa-solid fa-trash-can"></i>'.html_safe, project, class:"text-white hover:bg-trans visited:text-white", method: :delete, data: { confirm: 'Are you sure?' } %>
                     </div>
                 </div>

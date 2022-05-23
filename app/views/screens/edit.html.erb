@@ -1,0 +1,19 @@
+
+<div class="flex flex-col items-center justify-center h-screen pt-8">
+    <h2 class="text-big font-inter text-white font-extrabold" >Edit screen </h2>
+    
+    <div class="p-7 bg-darky rounded-xl my-8" >
+      <%= form_tag url_for(action: 'update'), method: "patch" do %>
+            <div class="flex flex-col">
+                  <%= label_tag 'Name', nil, :class => "text-white text-normal mb-2"  %>
+                  <%= text_field_tag 'name', @screen.name, :class => "w-64 mb-7 placeholder:text-ph", :placeholder => "Ex : My Project" %>
+
+                  <%= label_tag 'Type', nil, :class => "text-white text-normal mb-2"%>
+                  <%= text_field_tag 'value', @screen.value, :class => "w-64 mb-7 placeholder:text-ph", :placeholder => "Ex : MVP" %>
+
+                  <%= submit_tag "Create Project", :class => "btn-primary"   %>
+            </div>
+            <% end %>
+      </div>
+</div>
+<div class="absolute top-28 left-28 top" >  <%= link_to 'Back', :back, class: "btn-primary bg-darky" %> </div>

@@ -1,6 +1,9 @@
 Rails.application.routes.draw do
   devise_for :users
-  resources :project
+  
+  resources :project do 
+    resources :screens
+  end
 
   resources :user
 

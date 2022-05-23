@@ -32,6 +32,11 @@ class ProjectController < ApplicationController
       if @project.save
         flash[:success] = "Project created"
         redirect_to "/project"
+        Screen.create(name: "XS", value: 300, project: @project)
+        Screen.create(name: "S", value: 750, project: @project)
+        Screen.create(name: "M", value: 1200, project: @project)
+        Screen.create(name: "L", value: 1500, project: @project)
+        Screen.create(name: "XL", value: 1850, project: @project)
       else
         render 'project/new'
       end
@@ -52,6 +57,8 @@ class ProjectController < ApplicationController
 
   # DELETE /projects/1 or /projects/1.json
   def destroy
+    @screens = @project.screens
+    @screens.destroy_all
     @project.destroy
     flash[:error] = "Project destroyed"
     redirect_to '/project'

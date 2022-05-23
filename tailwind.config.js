@@ -6,7 +6,7 @@ module.exports = {
 	],
 	theme: {
 		colors: {
-			white: "#ffffff",
+			white: "#CBD5E1",
 			trans: "transparent",
 			blue: "#131C31",
 			btn: "#38BDF8",
@@ -20,6 +20,7 @@ module.exports = {
 			biggest: "3.75rem",
 			big: "2.25rem",
 			normal: "0.9rem",
+			medium: "0.8rem",
 			small: "1.125rem",
 		},
 		lineHeight: {
@@ -27,6 +28,7 @@ module.exports = {
 		},
 		minWidth: {
 			basic: "180px",
+			medium: "120px",
 		},
 		extend: {
 			fontFamily: {

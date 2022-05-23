@@ -24,7 +24,7 @@
      @apply py-3 px-6 bg-btn text-white text-normal font-semibold rounded-lg visited:text-white hover:bg-btnhover cursor-pointer
    }
    .link{
-      @apply text-white hover:bg-trans hover:underline underline-offset-2 visited:text-white text-normal
+      @apply text-white hover:bg-trans hover:underline underline-offset-2 visited:text-white text-normal cursor-pointer
    }
  }
 

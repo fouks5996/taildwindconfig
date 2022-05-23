@@ -496,11 +496,11 @@ Ensure the default browser behavior of the `hidden` attribute.
   font-size: 0.9rem;
   font-weight: 600;
   --tw-text-opacity: 1;
-  color: rgb(255 255 255 / var(--tw-text-opacity));
+  color: rgb(203 213 225 / var(--tw-text-opacity));
 }
 
 .btn-primary:visited {
-  color: rgb(255 255 255 );
+  color: rgb(203 213 225 );
 }
 
 .btn-primary:hover {
@@ -509,14 +509,15 @@ Ensure the default browser behavior of the `hidden` attribute.
 }
 
 .link {
+  cursor: pointer;
   font-size: 0.9rem;
   --tw-text-opacity: 1;
-  color: rgb(255 255 255 / var(--tw-text-opacity));
+  color: rgb(203 213 225 / var(--tw-text-opacity));
   text-underline-offset: 2px;
 }
 
 .link:visited {
-  color: rgb(255 255 255 );
+  color: rgb(203 213 225 );
 }
 
 .link:hover {
@@ -572,6 +573,16 @@ Ensure the default browser behavior of the `hidden` attribute.
   margin-bottom: 2rem;
 }
 
+.mx-5 {
+  margin-left: 1.25rem;
+  margin-right: 1.25rem;
+}
+
+.mx-3 {
+  margin-left: 0.75rem;
+  margin-right: 0.75rem;
+}
+
 .ml-3 {
   margin-left: 0.75rem;
 }
@@ -620,6 +631,22 @@ Ensure the default browser behavior of the `hidden` attribute.
   margin-right: 1.25rem;
 }
 
+.mr-3 {
+  margin-right: 0.75rem;
+}
+
+.mt-12 {
+  margin-top: 3rem;
+}
+
+.mr-4 {
+  margin-right: 1rem;
+}
+
+.-mt-3 {
+  margin-top: -0.75rem;
+}
+
 .mt-7 {
   margin-top: 1.75rem;
 }
@@ -634,6 +661,10 @@ Ensure the default browser behavior of the `hidden` attribute.
 
 .mb-6 {
   margin-bottom: 1.5rem;
+}
+
+.mt-10 {
+  margin-top: 2.5rem;
 }
 
 .inline {
@@ -708,12 +739,30 @@ Ensure the default browser behavior of the `hidden` attribute.
   width: 16rem;
 }
 
+.w-56 {
+  width: 14rem;
+}
+
+.w-fit {
+  width: -webkit-fit-content;
+  width: -moz-fit-content;
+  width: fit-content;
+}
+
 .w-2\/5 {
   width: 40%;
 }
 
+.w-1\/5 {
+  width: 20%;
+}
+
 .min-w-basic {
   min-width: 180px;
+}
+
+.min-w-medium {
+  min-width: 120px;
 }
 
 .max-w-7xl {
@@ -736,6 +785,10 @@ Ensure the default browser behavior of the `hidden` attribute.
   cursor: pointer;
 }
 
+.flex-row {
+  flex-direction: row;
+}
+
 .flex-col {
   flex-direction: column;
 }
@@ -752,12 +805,24 @@ Ensure the default browser behavior of the `hidden` attribute.
   align-items: center;
 }
 
+.justify-start {
+  justify-content: flex-start;
+}
+
 .justify-center {
   justify-content: center;
 }
 
 .justify-between {
   justify-content: space-between;
+}
+
+.gap-6 {
+  gap: 1.5rem;
+}
+
+.gap-3 {
+  gap: 0.75rem;
 }
 
 .rounded-md {
@@ -770,6 +835,10 @@ Ensure the default browser behavior of the `hidden` attribute.
 
 .rounded-xl {
   border-radius: 0.75rem;
+}
+
+.border {
+  border-width: 1px;
 }
 
 .bg-blue {
@@ -791,6 +860,11 @@ Ensure the default browser behavior of the `hidden` attribute.
   background-color: rgb(30 41 59 / var(--tw-bg-opacity));
 }
 
+.bg-btn {
+  --tw-bg-opacity: 1;
+  background-color: rgb(56 189 248 / var(--tw-bg-opacity));
+}
+
 .bg-opacity-25 {
   --tw-bg-opacity: 0.25;
 }
@@ -801,6 +875,10 @@ Ensure the default browser behavior of the `hidden` attribute.
 
 .p-7 {
   padding: 1.75rem;
+}
+
+.p-1 {
+  padding: 0.25rem;
 }
 
 .py-6 {
@@ -863,6 +941,10 @@ Ensure the default browser behavior of the `hidden` attribute.
   font-size: 1.125rem;
 }
 
+.text-medium {
+  font-size: 0.8rem;
+}
+
 .text-biggest {
   font-size: 3.75rem;
 }
@@ -889,7 +971,7 @@ Ensure the default browser behavior of the `hidden` attribute.
 
 .text-white {
   --tw-text-opacity: 1;
-  color: rgb(255 255 255 / var(--tw-text-opacity));
+  color: rgb(203 213 225 / var(--tw-text-opacity));
 }
 
 .text-btn {
@@ -944,7 +1026,7 @@ input[type=email], input[type=text], input[type=password]{
 }
 
 .visited\:text-white:visited {
-  color: rgb(255 255 255 );
+  color: rgb(203 213 225 );
 }
 
 .hover\:bg-trans:hover {
@@ -959,7 +1041,7 @@ input[type=email], input[type=text], input[type=password]{
 @media (prefers-color-scheme: dark) {
   .dark\:text-white {
     --tw-text-opacity: 1;
-    color: rgb(255 255 255 / var(--tw-text-opacity));
+    color: rgb(203 213 225 / var(--tw-text-opacity));
   }
 }
 
