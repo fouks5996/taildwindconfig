@@ -41,6 +41,7 @@ class ScreensController < ApplicationController
       )
       # Update data.json at each screen update
       put_into_json
+      download_file
       
       # redirect after screen update
       redirect_to project_screens_path
@@ -74,19 +75,29 @@ class ScreensController < ApplicationController
     end
 
     def put_into_json
+      arr1 = []
+      arr2 = []
       @screens.each do |screen|
-        File.open("./db/data.json","a") do |i|
-          name = screen.as_json.values[1]
-          value = screen.as_json.values[2]
-          arr1 = []
-          arr2 = []
-          arr1 << name
-          arr2 << value
-          hash = Hash[arr1.zip(arr2)]
-          i.write(JSON.pretty_generate(hash))
-        end
+        name = screen.as_json.values[1]
+        value = screen.as_json.values[2]
+        arr1 << name
+        arr2 << value
+      end
+      hash = Hash[arr1.zip(arr2)]
+      File.truncate("./db/data.json", 0)
+      File.open("./db/data.json","w") do |i|
+        i.write(JSON.pretty_generate(hash))
       end
     end
+
+    def download_file
+      open("http://localhost:3000/data.json") do |in_io|
+          File.open("./db/data.json", 'w') do |out_io|
+            out_io.print in_io.read
+          end
+        end
+    end
+
 
     # Only allow a list of trusted parameters through.
     def screen_params
