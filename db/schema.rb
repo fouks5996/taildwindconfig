@@ -27,7 +27,7 @@ ActiveRecord::Schema.define(version: 2022_05_22_153508) do
 
   create_table "screens", force: :cascade do |t|
     t.string "name"
-    t.integer "value"
+    t.string "value"
     t.bigint "project_id"
     t.datetime "created_at", null: false
     t.datetime "updated_at", null: false

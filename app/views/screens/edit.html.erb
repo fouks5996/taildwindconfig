@@ -6,10 +6,10 @@
       <%= form_tag url_for(action: 'update'), method: "patch" do %>
             <div class="flex flex-col">
                   <%= label_tag 'Name', nil, :class => "text-white text-normal mb-2"  %>
-                  <%= text_field_tag 'name', @screen.name, :class => "w-64 mb-7 placeholder:text-ph", :placeholder => "Ex : My Project" %>
+                  <%= text_field_tag 'name', @screen.name, :class => "text-white w-64 mb-7 placeholder:text-ph", :placeholder => "Ex : My Project" %>
 
                   <%= label_tag 'Type', nil, :class => "text-white text-normal mb-2"%>
-                  <%= text_field_tag 'value', @screen.value, :class => "w-64 mb-7 placeholder:text-ph", :placeholder => "Ex : MVP" %>
+                  <%= text_field_tag 'value', @screen.value, :class => "text-white w-64 mb-7 placeholder:text-ph", :placeholder => "Ex : MVP" %>
 
                   <%= submit_tag "Create Project", :class => "btn-primary"   %>
             </div>
