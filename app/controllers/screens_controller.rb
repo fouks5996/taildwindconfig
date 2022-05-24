@@ -1,5 +1,7 @@
 class ScreensController < ApplicationController
   before_action :set_screen, only: %i[ show edit update destroy ]
+  require 'bundler'
+  Bundler.require
 
 
   # GET /screens or /screens.json
@@ -44,6 +46,9 @@ class ScreensController < ApplicationController
         name: params[:name], 
         value: params[:value], 
       )
+
+      put_into_json
+
       redirect_to project_screens_path
         #format.html { redirect_to screen_url(@screen), notice: "Screen was successfully updated." }
         #format.json { render :show, status: :ok, location: @screen }
@@ -67,6 +72,15 @@ class ScreensController < ApplicationController
     # Use callbacks to share common setup or constraints between actions.
     def set_screen
       @screen = Screen.find(params[:id])
+    end
+
+    def put_into_json
+      @screens = Project.find(params[:project_id]).screens
+      @screen_array = []
+      @screen_array << @screens 
+      File.open("./db/data.json","w") do |i|
+        i.write(JSON.pretty_generate(@screen_array))
+      end
     end
 
     # Only allow a list of trusted parameters through.
