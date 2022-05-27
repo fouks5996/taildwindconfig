@@ -7,6 +7,8 @@ class ScreensController < ApplicationController
   def index
     @project = Project.find(params[:project_id])
     @project_length = User.find(current_user.id).projects.length
+    @json_read = json_read
+    @put_into_json = put_into_json
   end
 
   def show
@@ -41,8 +43,7 @@ class ScreensController < ApplicationController
       )
       # Update data.json at each screen update
       put_into_json
-      download_file
-      
+
       # redirect after screen update
       redirect_to project_screens_path
       else
@@ -60,8 +61,6 @@ class ScreensController < ApplicationController
       format.json { head :no_content }
     end
   end
-
-
 
 
 
@@ -90,12 +89,9 @@ class ScreensController < ApplicationController
       end
     end
 
-    def download_file
-      open("http://localhost:3000/data.json") do |in_io|
-          File.open("./db/data.json", 'w') do |out_io|
-            out_io.print in_io.read
-          end
-        end
+    def json_read 
+      jsy = JSON.parse(File.read("./db/data.json"))
+      JSON.pretty_generate(jsy)
     end
 
 

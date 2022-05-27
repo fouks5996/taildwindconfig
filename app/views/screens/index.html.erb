@@ -10,7 +10,8 @@
           <a href="#" class="link">Reset all</a> 
       </div>
       <div> 
-          <a href="#" class="btn-primary"> Export</a> 
+
+          <a href="<% @project %>" class="btn-primary"> Export</a> 
       </div>
     </div>
   </div>
@@ -50,28 +51,44 @@
           </li>
         </ul>
       </div>
+
       <div>
           <h1 class="text-big font-inter text-white font-extrabold mb-2 -mt-3" > Screens</h1>
           <p class="text-small font-inter text-white w-4/5" >Lorem ipsum dolor sit amet, consectetur adipiscing elit. Faucibus ullamcorper vestibulum urna tincidunt quis vestibulum duis a. Lacus pellentesque id amet malesuada </p>
-          <div>
-            <div class="flex items-center mt-10 mb-3 ml-4" >
-            <div class="text-normal text-white  min-w-medium mr-3 " > Name </div>
-            <div class="text-normal text-white  min-w-medium "> Value</div>
-            <div></div>
-        </div>
-        <div class="bg-darky w-fit p-3 rounded-xl " >
-          <% @screens.each do |screen| %>
-                <div class="flex justify-start gap-3 items-center mb-2" >
-                    <div class="text-medium text-white p-3 bg-lighty bg-opacity-25 min-w-medium rounded-md" > <%= screen.name %></div>
-                    <div class="text-medium text-white p-3 bg-lighty bg-opacity-25 min-w-medium rounded-md">  <%= screen.value %> </div>
-                    <%= link_to '<i class="fa-solid fa-sliders"></i>'.html_safe, edit_project_screen_path(@project, screen.id), class:"mx-3  text-white hover:bg-trans visited:text-white" %>
-                </div>
-            <% end %>
+          
+          <div class="flex flex-row justify-start gap-8" >
+            <div>
+              <div class="flex items-center mt-10 mb-3 ml-4" >
+                <div class="text-normal text-white  min-w-medium mr-3 " > Name </div>
+                <div class="text-normal text-white  min-w-medium "> Value</div>
+                <div></div>
+              </div>
+              <div class="bg-darky w-fit p-3 rounded-xl " >
+                <% @screens.each do |screen| %>
+                      <div class="flex justify-start gap-3 items-center mb-2" >
+                          <div class="text-medium text-white p-3 bg-lighty bg-opacity-25 min-w-medium rounded-md" > <%= screen.name %></div>
+                          <div class="text-medium text-white p-3 bg-lighty bg-opacity-25 min-w-medium rounded-md">  <%= screen.value %> </div>
+                          <%= link_to '<i class="fa-solid fa-sliders"></i>'.html_safe, edit_project_screen_path(@project, screen.id), class:"mx-3  text-white hover:bg-trans visited:text-white" %>
+                      </div>
+                <% end %>
+              </div>
+            </div>
+
+            <div class="bg-darky p-6 rounded-xl mt-20 min-w-[500px] max-w-lg text-darky relative">
+              <pre id="div1" class="h-full w-full bg-trans" >
+                    <%= @json_read %>
+              </pre>
+                <a onclick="showText()"  class="btn-primary mr-3 absolute bottom-4 right-1">Show Json</a> 
+            </div>
           </div>
       </div>
   </div>
 </div>
 
-
-
+<script>
+  function showText(){
+    let para = document.getElementById("div1")
+    para.classList.toggle("text-white")
+  }
+</script>
 
