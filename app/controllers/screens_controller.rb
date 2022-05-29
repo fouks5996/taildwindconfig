@@ -1,8 +1,11 @@
 class ScreensController < ApplicationController
   before_action :set_screen, only: %i[ show edit update destroy ]
   before_action :set_project_screens, only: %i[ index update ]
+  before_action :set_project_id
   require 'bundler'
   Bundler.require
+
+  
 
   def index
     @project = Project.find(params[:project_id])
@@ -73,6 +76,10 @@ class ScreensController < ApplicationController
       @screens = Project.find(params[:project_id]).screens.reorder('id ASC')
     end
 
+    def set_project_id
+      @project_id = Project.find(params[:project_id]).id
+    end
+
     def put_into_json
       arr1 = []
       arr2 = []
@@ -83,14 +90,15 @@ class ScreensController < ApplicationController
         arr2 << value
       end
       hash = Hash[arr1.zip(arr2)]
-      File.truncate("./db/data.json", 0)
-      File.open("./db/data.json","w") do |i|
+      File.truncate("./db/json/project_#{@project_id}_data.json", 2)
+      File.open("./db/json/project_#{@project_id}_data.json","w") do |i|
         i.write(JSON.pretty_generate(hash))
       end
     end
 
     def json_read 
-      jsy = JSON.parse(File.read("./db/data.json"))
+      file_to_parse = File.read("./db/json/project_#{@project_id}_data.json")
+      jsy = JSON.parse(file_to_parse)
       JSON.pretty_generate(jsy)
     end
 

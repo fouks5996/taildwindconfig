@@ -32,11 +32,8 @@ class ProjectController < ApplicationController
       if @project.save
         flash[:success] = "Project created"
         redirect_to "/project"
-        Screen.create(name: "XS", value: 300, project: @project)
-        Screen.create(name: "S", value: 750, project: @project)
-        Screen.create(name: "M", value: 1200, project: @project)
-        Screen.create(name: "L", value: 1500, project: @project)
-        Screen.create(name: "XL", value: 1850, project: @project)
+        create_screen
+        create_json
       else
         render 'project/new'
       end
@@ -60,6 +57,7 @@ class ProjectController < ApplicationController
     @screens = @project.screens
     @screens.destroy_all
     @project.destroy
+    delete_json
     flash[:error] = "Project destroyed"
     redirect_to '/project'
   end
@@ -73,5 +71,32 @@ class ProjectController < ApplicationController
     # Only allow a list of trusted parameters through.
     def project_params
       params.fetch(:project, {})
+    end
+
+    # create screen after create project
+    def create_screen
+      Screen.create(name: "XS", value: 300, project: @project)
+      Screen.create(name: "S", value: 750, project: @project)
+      Screen.create(name: "M", value: 1200, project: @project)
+      Screen.create(name: "L", value: 1500, project: @project)
+      Screen.create(name: "XL", value: 1850, project: @project)
+    end
+
+    # create json after create project
+    def create_json
+      File.new("./db/json/project_#{@project.id}_data.json", "w")
+      File.write("./db/json/project_#{@project.id}_data.json", '{
+        "XS": "300",
+        "S": "750",
+        "M": "1200",
+        "L": "1500",
+        "XL": "1850"
+      }')
+
+    end
+
+    # delete json after delete project
+    def delete_json
+      File.delete("./db/json/project_#{@project.id}_data.json")
     end
 end
