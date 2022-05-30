@@ -1,6 +1,8 @@
 class ProjectController < ApplicationController
   before_action :set_project, only: %i[show edit update destroy ]
   before_action :authenticate_user!, only: [:new, :edit, :destroy, :update, :show, :index]
+  require 'bundler'
+  Bundler.require
 
   # GET /projects or /projects.json
   def index
@@ -32,8 +34,8 @@ class ProjectController < ApplicationController
       if @project.save
         flash[:success] = "Project created"
         redirect_to "/project"
-        create_screen
-        create_json
+        create_json_directory
+        create_screen_file
       else
         render 'project/new'
       end
@@ -57,46 +59,75 @@ class ProjectController < ApplicationController
     @screens = @project.screens
     @screens.destroy_all
     @project.destroy
+    puts current_user
     delete_json
     flash[:error] = "Project destroyed"
     redirect_to '/project'
   end
 
   private
-    # Use callbacks to share common setup or constraints between actions.
+    # je défini le PROJECT ID
     def set_project
       @project = Project.find(params[:id])
     end
 
-    # Only allow a list of trusted parameters through.
+    # je défini les params du projet
     def project_params
       params.fetch(:project, {})
     end
 
-    # create screen after create project
-    def create_screen
+
+    # CHECK IF DIRECTORIES EXISTS
+    def current_user_file_exist?
+      if File.exists?("./db/json/#{@current_user.first_name}")
+        return true 
+      else 
+        return false
+      end
+    end
+
+    def project_file_exist?
+      if File.exists?("./db/json/#{@current_user.first_name}/project_#{@project.id}")
+        return true 
+      else 
+        return false
+      end
+    end
+
+    # CREATE USER, PROJECT AND JSON DIRECTORIES (called in create method)
+    def create_json_directory
+      if current_user_file_exist? == true && project_file_exist? == true
+      elsif current_user_file_exist? == true && project_file_exist? == false 
+        Dir.mkdir("./db/json/#{@current_user.first_name}/project_#{@project.id}")
+      elsif current_user_file_exist? == false && project_file_exist? == true 
+        Dir.mkdir("./db/json/#{@current_user.first_name}")
+      else 
+        Dir.mkdir("./db/json/#{@current_user.first_name}")
+        Dir.mkdir("./db/json/#{@current_user.first_name}/project_#{@project.id}")
+      end 
+    end
+
+    # CREATE JSON SCREEN FILE (called in create method)
+    def create_screen_file
       Screen.create(name: "XS", value: 300, project: @project)
       Screen.create(name: "S", value: 750, project: @project)
       Screen.create(name: "M", value: 1200, project: @project)
       Screen.create(name: "L", value: 1500, project: @project)
       Screen.create(name: "XL", value: 1850, project: @project)
-    end
 
-    # create json after create project
-    def create_json
-      File.new("./db/json/project_#{@project.id}_data.json", "w")
-      File.write("./db/json/project_#{@project.id}_data.json", '{
+      File.new("./db/json/#{@current_user.first_name}/project_#{@project.id}/screen.json", "w")
+      File.write("./db/json/#{@current_user.first_name}/project_#{@project.id}/screen.json", '{
         "XS": "300",
         "S": "750",
         "M": "1200",
         "L": "1500",
         "XL": "1850"
       }')
-
     end
 
-    # delete json after delete project
+
+    # DELETE PROJECT WITH CONTENT (called in destroy method)
     def delete_json
-      File.delete("./db/json/project_#{@project.id}_data.json")
+      FileUtils.rm_rf("./db/json/#{@current_user.first_name}/project_#{@project.id}")
     end
 end

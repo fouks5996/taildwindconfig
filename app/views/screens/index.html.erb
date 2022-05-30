@@ -1,16 +1,14 @@
 <div class="pt-32 max-w-7xl mx-auto px-4 sm:px-6 lg:px-8">
   <div class="flex " >
     <div class="w-56">
-    <h6 class="text-sm font-bold text-btn " > Editing : </h6>
-    <p class="text-normal text-white" > <%= @project.project_name %> </p>
+
     </div>
     <div class="flex justify-between items-center w-full"> 
       <div>  
-          <a href="#" class="btn-primary mr-3">Save All</a> 
-          <a href="#" class="link">Reset all</a> 
+         <h6 class="text-sm font-bold text-btn " > Editing : </h6>
+         <p class="text-normal text-white" > <%= @project.project_name %> </p>
       </div>
       <div> 
-
           <a href="<% @project %>" class="btn-primary"> Export</a> 
       </div>
     </div>
@@ -84,7 +82,7 @@
       </div>
   </div>
 </div>
-
+<div class="absolute left-28 top-32" >  <%= link_to 'Back', :back, class: "btn-primary bg-darky" %> </div>
 <script>
   function showText(){
     let para = document.getElementById("div1")

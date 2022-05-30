@@ -1,7 +1,8 @@
 class ScreensController < ApplicationController
   before_action :set_screen, only: %i[ show edit update destroy ]
   before_action :set_project_screens, only: %i[ index update ]
-  before_action :set_project_id
+  before_action :set_project
+  before_action :set_user
   require 'bundler'
   Bundler.require
 
@@ -9,9 +10,12 @@ class ScreensController < ApplicationController
 
   def index
     @project = Project.find(params[:project_id])
-    @project_length = User.find(current_user.id).projects.length
+
+    # je défini la longueur des projet de l'utilisateur
+    @project_length = @user.projects.length
+
+    # Appel de la methode dans la view 
     @json_read = json_read
-    @put_into_json = put_into_json
   end
 
   def show
@@ -26,7 +30,6 @@ class ScreensController < ApplicationController
 
   def create
     @screen = Screen.new(screen_params)
-
     respond_to do |format|
       if @screen.save
         format.html { redirect_to screen_path(@screen), notice: "Screen was successfully created." }
@@ -44,7 +47,7 @@ class ScreensController < ApplicationController
         name: params[:name], 
         value: params[:value], 
       )
-      # Update data.json at each screen update
+      # Update json a chaque screen update
       put_into_json
 
       # redirect after screen update
@@ -68,16 +71,24 @@ class ScreensController < ApplicationController
 
 
   private
+    # je défini le SCREEN ID
     def set_screen
       @screen = Screen.find(params[:id])
     end
 
+    # je défini l'ensemble des SCREENS
     def set_project_screens
       @screens = Project.find(params[:project_id]).screens.reorder('id ASC')
     end
 
-    def set_project_id
-      @project_id = Project.find(params[:project_id]).id
+    # je défini le PROJECT ID
+    def set_project
+      @project = Project.find(params[:project_id])
+    end
+
+    # je défini le USER ID
+    def set_user
+      @user = User.find(current_user.id)
     end
 
     def put_into_json
@@ -90,14 +101,14 @@ class ScreensController < ApplicationController
         arr2 << value
       end
       hash = Hash[arr1.zip(arr2)]
-      File.truncate("./db/json/project_#{@project_id}_data.json", 2)
-      File.open("./db/json/project_#{@project_id}_data.json","w") do |i|
+      File.truncate("./db/json/#{@user.first_name}/project_#{@project.id}/screen.json", 2)
+      File.open("./db/json/#{@user.first_name}/project_#{@project.id}/screen.json","w") do |i|
         i.write(JSON.pretty_generate(hash))
       end
     end
 
     def json_read 
-      file_to_parse = File.read("./db/json/project_#{@project_id}_data.json")
+      file_to_parse = File.read("./db/json/#{@user.first_name}/project_#{@project.id}/screen.json")
       jsy = JSON.parse(file_to_parse)
       JSON.pretty_generate(jsy)
     end
