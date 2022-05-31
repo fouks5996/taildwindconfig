@@ -1,12 +1,10 @@
 class ScreensController < ApplicationController
   before_action :set_screen, only: %i[ show edit update destroy ]
-  before_action :set_project_screens, only: %i[ index update ]
+  before_action :set_project_screens, only: %i[ index update create destroy]
   before_action :set_project
   before_action :set_user
   require 'bundler'
   Bundler.require
-
-  
 
   def index
     @project = Project.find(params[:project_id])
@@ -15,7 +13,7 @@ class ScreensController < ApplicationController
     @project_length = @user.projects.length
 
     # Appel de la methode dans la view 
-    @json_read = json_read
+    @json_read = json_read("screen")
   end
 
   def show
@@ -29,14 +27,21 @@ class ScreensController < ApplicationController
   end
 
   def create
-    @screen = Screen.new(screen_params)
+    puts "ok"
+    @screen = Screen.create(
+      name: params[:name], 
+      value: params[:value], 
+      project: @project
+    )
+    puts "j'arrive"
     respond_to do |format|
       if @screen.save
-        format.html { redirect_to screen_path(@screen), notice: "Screen was successfully created." }
-        format.json { render :show, status: :created, location: @screen }
+        put_into_json
+        puts "creée"
+        format.html { redirect_to project_screens_path(@project)}
       else
+        puts "pas crée"
         format.html { render :new, status: :unprocessable_entity }
-        format.json { render json: @screen.errors, status: :unprocessable_entity }
       end
     end
   end
@@ -61,9 +66,10 @@ class ScreensController < ApplicationController
 
   def destroy
     @screen.destroy
+    put_into_json
 
     respond_to do |format|
-      format.html { redirect_to screens_url, notice: "Screen was successfully destroyed." }
+      format.html { redirect_to project_screens_path(@project) }
       format.json { head :no_content }
     end
   end
@@ -78,7 +84,7 @@ class ScreensController < ApplicationController
 
     # je défini l'ensemble des SCREENS
     def set_project_screens
-      @screens = Project.find(params[:project_id]).screens.reorder('id ASC')
+      @screens = Project.find(params[:project_id]).screens.order('id ASC')
     end
 
     # je défini le PROJECT ID
@@ -107,8 +113,8 @@ class ScreensController < ApplicationController
       end
     end
 
-    def json_read 
-      file_to_parse = File.read("./db/json/#{@user.first_name}/project_#{@project.id}/screen.json")
+    def json_read(to_read)
+      file_to_parse = File.read("./db/json/#{@user.first_name}/project_#{@project.id}/#{to_read}.json")
       jsy = JSON.parse(file_to_parse)
       JSON.pretty_generate(jsy)
     end

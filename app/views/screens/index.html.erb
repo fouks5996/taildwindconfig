@@ -66,9 +66,19 @@
                       <div class="flex justify-start gap-3 items-center mb-2" >
                           <div class="text-medium text-white p-3 bg-lighty bg-opacity-25 min-w-medium rounded-md" > <%= screen.name %></div>
                           <div class="text-medium text-white p-3 bg-lighty bg-opacity-25 min-w-medium rounded-md">  <%= screen.value %> </div>
-                          <%= link_to '<i class="fa-solid fa-sliders"></i>'.html_safe, edit_project_screen_path(@project, screen.id), class:"mx-3  text-white hover:bg-trans visited:text-white" %>
+                          <%= link_to '<i class="fa-solid fa-gear"></i>'.html_safe, edit_project_screen_path(@project, screen.id), class:"ml-4 mr-3  text-white hover:bg-trans visited:text-white" %>
+                          <%= link_to '<i class="fa-solid fa-trash-can"></i>'.html_safe, project_screen_path(@project, screen.id), class:"text-white hover:bg-trans visited:text-white", method: :delete, data: { confirm: 'Are you sure?' } %>
                       </div>
                 <% end %>
+                <%= form_tag(project_screens_path(@project), method: :post)  do %>
+                <div class="flex pt-2 border-t border-lighty" >
+                  <div class="flex justify-start gap-3 items-center bt-2 ">
+                      <%= text_field_tag :name, nil, class: "w-medium text-white"%>
+                      <%= text_field_tag :value, nil, class: "w-medium text-white" %>
+                      <%= submit_tag 'Add screen', :name => 'commit', class: "btn-secondary" %>
+                  </div>
+                </div>
+                <%end%>
               </div>
             </div>
 
@@ -81,6 +91,11 @@
           </div>
       </div>
   </div>
+
+
+
+
+
 </div>
 <div class="absolute left-28 top-32" >  <%= link_to 'Back', :back, class: "btn-primary bg-darky" %> </div>
 <script>

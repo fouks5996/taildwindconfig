@@ -21,6 +21,7 @@ module.exports = {
 			big: "2.25rem",
 			normal: "0.9rem",
 			medium: "0.8rem",
+			xsmall: "0.7rem",
 			small: "1.125rem",
 		},
 		lineHeight: {
@@ -28,6 +29,9 @@ module.exports = {
 		},
 		minWidth: {
 			basic: "180px",
+			medium: "140px",
+		},
+		width: {
 			medium: "140px",
 		},
 		extend: {
