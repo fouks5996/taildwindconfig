@@ -109,19 +109,15 @@ class ProjectController < ApplicationController
 
     # CREATE JSON SCREEN FILE (called in create method)
     def create_screen_file
-      Screen.create(name: "XS", value: 300, project: @project)
-      Screen.create(name: "S", value: 750, project: @project)
-      Screen.create(name: "M", value: 1200, project: @project)
-      Screen.create(name: "L", value: 1500, project: @project)
-      Screen.create(name: "XL", value: 1850, project: @project)
+      Screen.create(name: "small", value: 375, project: @project)
+      Screen.create(name: "medium", value: 850, project: @project)
+      Screen.create(name: "large", value: 1440, project: @project)
 
       File.new("./db/json/#{@current_user.first_name}/project_#{@project.id}/screen.json", "w")
       File.write("./db/json/#{@current_user.first_name}/project_#{@project.id}/screen.json", '{
-        "XS": "300",
-        "S": "750",
-        "M": "1200",
-        "L": "1500",
-        "XL": "1850"
+        "small": "375",
+        "medium": "850",
+        "large": "1440"
       }')
     end
 

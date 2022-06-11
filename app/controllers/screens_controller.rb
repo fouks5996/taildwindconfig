@@ -9,6 +9,7 @@ class ScreensController < ApplicationController
   def index
     @project = Project.find(params[:project_id])
 
+    puts @screens
     # je défini la longueur des projet de l'utilisateur
     @project_length = @user.projects.length
 
@@ -84,7 +85,7 @@ class ScreensController < ApplicationController
 
     # je défini l'ensemble des SCREENS
     def set_project_screens
-      @screens = Project.find(params[:project_id]).screens.order('id ASC')
+      @screens = Project.find(params[:project_id]).screens
     end
 
     # je défini le PROJECT ID
