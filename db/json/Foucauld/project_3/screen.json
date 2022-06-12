@@ -1,5 +1,6 @@
 {
-  "small": "375",
-  "medium": "850",
-  "large": "1440"
+  "smallx": "375px",
+  "medium": "850px",
+  "large": "1440px",
+  "iPhone": "1850px"
 }

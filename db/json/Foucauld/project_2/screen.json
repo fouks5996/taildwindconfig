@@ -1,7 +1,6 @@
 {
-  "small": "375",
-  "medium": "850",
+  "Large": "1000",
   "large": "1440",
-  "Xsmall": "200",
-  "iPhone": "2000"
+  "small": "275",
+  "medium": "850"
 }
