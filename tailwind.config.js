@@ -5,6 +5,12 @@ module.exports = {
 		"./app/views/**/*",
 	],
 	theme: {
+		screen: {
+			small: "375",
+			medium: "850",
+			large: "1440",
+			Xsmall: "200",
+		},
 		colors: {
 			white: "#ffffff",
 			trans: "transparent",

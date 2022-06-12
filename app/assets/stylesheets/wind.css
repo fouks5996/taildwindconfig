@@ -583,6 +583,10 @@ Ensure the default browser behavior of the `hidden` attribute.
   left: 7rem;
 }
 
+.left-0 {
+  left: 0px;
+}
+
 .bottom-4 {
   bottom: 1rem;
 }
@@ -749,6 +753,10 @@ Ensure the default browser behavior of the `hidden` attribute.
   min-width: 500px;
 }
 
+.min-w-\[300px\] {
+  min-width: 300px;
+}
+
 .max-w-7xl {
   max-width: 80rem;
 }
@@ -815,18 +823,6 @@ Ensure the default browser behavior of the `hidden` attribute.
 
 .gap-3 {
   gap: 0.75rem;
-}
-
-.divide-y > :not([hidden]) ~ :not([hidden]) {
-  --tw-divide-y-reverse: 0;
-  border-top-width: calc(1px * calc(1 - var(--tw-divide-y-reverse)));
-  border-bottom-width: calc(1px * var(--tw-divide-y-reverse));
-}
-
-.divide-y-8 > :not([hidden]) ~ :not([hidden]) {
-  --tw-divide-y-reverse: 0;
-  border-top-width: calc(8px * calc(1 - var(--tw-divide-y-reverse)));
-  border-bottom-width: calc(8px * var(--tw-divide-y-reverse));
 }
 
 .rounded-md {
@@ -938,16 +934,8 @@ Ensure the default browser behavior of the `hidden` attribute.
   padding-top: 2rem;
 }
 
-.pb-2 {
-  padding-bottom: 0.5rem;
-}
-
 .pt-2 {
   padding-top: 0.5rem;
-}
-
-.pt-4 {
-  padding-top: 1rem;
 }
 
 .text-center {
@@ -968,10 +956,6 @@ Ensure the default browser behavior of the `hidden` attribute.
 
 .text-small {
   font-size: 1.125rem;
-}
-
-.text-medium {
-  font-size: 0.8rem;
 }
 
 .text-biggest {
@@ -1042,6 +1026,7 @@ input[type=email], input[type=text], input[type=password]{
   background-color: #334155 !important;
   border-radius: 4px;
   border-style: none;
+  font-size: 0.85rem;
 }
 
 .placeholder\:text-ph::-moz-placeholder {
