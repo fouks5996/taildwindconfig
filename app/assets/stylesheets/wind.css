@@ -821,18 +821,6 @@ Ensure the default browser behavior of the `hidden` attribute.
   gap: 0.75rem;
 }
 
-.gap-5 {
-  gap: 1.25rem;
-}
-
-.gap-16 {
-  gap: 4rem;
-}
-
-.gap-24 {
-  gap: 6rem;
-}
-
 .gap-28 {
   gap: 7rem;
 }
@@ -976,14 +964,6 @@ Ensure the default browser behavior of the `hidden` attribute.
 
 .text-biggest {
   font-size: 3.75rem;
-}
-
-.text-xsmall {
-  font-size: 0.7rem;
-}
-
-.text-medium {
-  font-size: 0.8rem;
 }
 
 .font-normal {
