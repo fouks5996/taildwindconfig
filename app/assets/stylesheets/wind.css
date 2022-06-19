@@ -583,6 +583,10 @@ Ensure the default browser behavior of the `hidden` attribute.
   left: 7rem;
 }
 
+.left-0 {
+  left: 0px;
+}
+
 .bottom-4 {
   bottom: 1rem;
 }
@@ -747,6 +751,10 @@ Ensure the default browser behavior of the `hidden` attribute.
 
 .min-w-\[500px\] {
   min-width: 500px;
+}
+
+.min-w-\[300px\] {
+  min-width: 300px;
 }
 
 .max-w-7xl {
@@ -950,10 +958,6 @@ Ensure the default browser behavior of the `hidden` attribute.
   font-size: 1.125rem;
 }
 
-.text-medium {
-  font-size: 0.8rem;
-}
-
 .text-biggest {
   font-size: 3.75rem;
 }
@@ -1022,6 +1026,7 @@ input[type=email], input[type=text], input[type=password]{
   background-color: #334155 !important;
   border-radius: 4px;
   border-style: none;
+  font-size: 0.85rem;
 }
 
 .placeholder\:text-ph::-moz-placeholder {
