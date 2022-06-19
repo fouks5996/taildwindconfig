@@ -1,0 +1,45 @@
+<div>
+      <h1 class="text-big font-inter text-white font-extrabold mb-2 -mt-3" > Screens</h1>
+      <p class="text-small font-inter text-white w-4/5" >Lorem ipsum dolor sit amet, consectetur adipiscing elit. Faucibus ullamcorper vestibulum urna tincidunt quis vestibulum duis a. Lacus pellentesque id amet malesuada </p>
+      
+      <div class="flex flex-row justify-start gap-8" >
+      <div>
+         <div class="flex items-center mt-10 mb-3 ml-4" >
+            <div class="text-normal text-white  min-w-medium mr-3 " > Name </div>
+            <div class="text-normal text-white  min-w-medium "> Value</div>
+            <div></div>
+         </div>
+         <div class="bg-darky w-fit p-3 rounded-xl " >
+            <% @screens.each do |screen| %>
+               <div class="flex justify-start gap-3 items-center bt-2 mb-3">
+                  <%= form_tag project_screen_path(@project.id, screen.id), :method => :patch do %>
+                        <div class="flex justify-start gap-3 items-center mr-2">
+                              <%= text_field_tag 'name', screen.name, :class => "w-medium text-white text-biggest " %>
+                              <%= text_field_tag 'value', screen.value, :class => "w-medium text-white " %>
+                              <%= submit_tag "Edit", :class => "text-btn !bg-trans text-normal cursor-pointer"   %>
+                        </div>
+                  <% end %>
+                  <%= link_to '<i class="fa-solid fa-trash-can"></i>'.html_safe, project_screen_path(@project, screen.id), class:"text-white hover:bg-trans visited:text-white", method: :delete, data: { confirm: 'Are you sure?' } %>
+               </div>
+            <% end %>
+            <%= form_tag(project_screens_path(@project), method: :post) do %>
+            <div class="flex pt-2 border-t border-lighty" >
+            <div class="flex justify-start gap-3 items-center bt-2 ">
+                  <%= text_field_tag :name, nil, class: "w-medium text-white", :placeholder => "Ex : My Project"%>
+                  <%= text_field_tag :value, nil, class: "w-medium text-white", :placeholder => "Ex : MVP"  %>
+                  <%= submit_tag 'Add screen', :name => 'commit', class: "btn-secondary" %>
+            </div>
+            </div>
+            <%end%>
+         </div>
+      </div>
+
+      <div class="bg-darky p-6 rounded-xl mt-20 min-w-[300px] max-w-lg text-darky text-white relative">
+         <pre id="div1" class="h-full w-full bg-trans relative text-white " >
+            <span class="absolute left-0">  screens : </span>
+            <%= @json_read %>,
+         </pre>
+            <a id="bouton" class="btn-primary mr-3 absolute bottom-4 right-1 bouton"> Copy </a> 
+      </div>
+      </div>
+</div>
