@@ -8,12 +8,7 @@ class ScreensController < ApplicationController
 
   def index
     @project = Project.find(params[:project_id])
-
-
-    # je défini la longueur des projet de l'utilisateur
     @project_length = @user.projects.length
-
-    # Appel de la methode dans la view 
     @json_read = json_read("screen")
   end
 
@@ -28,20 +23,16 @@ class ScreensController < ApplicationController
   end
 
   def create
-    puts "ok"
     @screen = Screen.create(
       name: params[:name], 
       value: params[:value], 
       project: @project
     )
-    puts "j'arrive"
     respond_to do |format|
       if @screen.save
-        put_into_json
-        puts "creée"
+        @screen.put_into_json(@screens, @user, @project)
         format.html { redirect_to project_screens_path(@project)}
       else
-        puts "pas crée"
         format.html { render :new, status: :unprocessable_entity }
       end
     end
@@ -53,10 +44,8 @@ class ScreensController < ApplicationController
         name: params[:name], 
         value: params[:value], 
       )
-      # Update json a chaque screen update
-      put_into_json
+      @screen.put_into_json(@screens, @user, @project)
 
-      # redirect after screen update
       redirect_to project_screens_path
       else
         format.html { render :edit, status: :unprocessable_entity }
@@ -67,7 +56,7 @@ class ScreensController < ApplicationController
 
   def destroy
     @screen.destroy
-    put_into_json
+    @screen.put_into_json(@screens, @user, @project)
 
     respond_to do |format|
       format.html { redirect_to project_screens_path(@project) }
@@ -78,52 +67,30 @@ class ScreensController < ApplicationController
 
 
   private
-    # je défini le SCREEN ID
     def set_screen
-      @screen = Screen.order(:value).find(params[:id])
+      @screen = Screen.find(params[:id])
     end
 
-    # je défini l'ensemble des SCREENS
     def set_project_screens
       @screens = Project.find(params[:project_id]).screens
 
     end
 
-    # je défini le PROJECT ID
     def set_project
       @project = Project.find(params[:project_id])
     end
 
-    # je défini le USER ID
     def set_user
       @user = User.find(current_user.id)
     end
 
-    def put_into_json
-      arr1 = []
-      arr2 = []
-      @screens.each do |screen|
-        name = screen.as_json.values[1]
-        value = screen.as_json.values[2]
-        arr1 << name
-        arr2 << value
-      end
-      hash = Hash[arr1.zip(arr2)]
-      File.truncate("./db/json/#{@user.first_name}/project_#{@project.id}/screen.json", 2)
-      File.open("./db/json/#{@user.first_name}/project_#{@project.id}/screen.json","w") do |i|
-        i.write(JSON.pretty_generate(hash))
-      end
+    def screen_params
+      params.fetch(:screen, {})
     end
 
     def json_read(to_read)
       file_to_parse = File.read("./db/json/#{@user.first_name}/project_#{@project.id}/#{to_read}.json")
       jsy = JSON.parse(file_to_parse)
       JSON.pretty_generate(jsy)
-    end
-
-
-    # Only allow a list of trusted parameters through.
-    def screen_params
-      params.fetch(:screen, {})
     end
 end

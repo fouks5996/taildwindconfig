@@ -59,7 +59,7 @@ class ProjectController < ApplicationController
     @screens = @project.screens
     @screens.destroy_all
     @project.destroy
-    puts current_user
+    
     delete_json
     flash[:error] = "Project destroyed"
     redirect_to '/project'
