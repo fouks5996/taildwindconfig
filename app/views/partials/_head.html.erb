@@ -1,0 +1,12 @@
+<div class="flex justify-between items-center w-full"> 
+   <div class="flex items-center gap-28">
+         <div>  <%= link_to 'Back', :back, class: "btn-primary bg-darky" %> </div>
+         <div>  
+         <h6 class="text-sm font-bold text-btn " > Editing : </h6>
+         <p class="text-normal text-white" > <%= @project.project_name %> </p>
+         </div>
+   </div>
+   <div> 
+         <a href="<% @project %>" class="btn-primary"> Export</a> 
+   </div>
+</div>
